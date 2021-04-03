@@ -1,5 +1,9 @@
 # ProyectoTestBlockAdblock
 
+Este proyecto se basa en la web https://1938.com.es/mostrar-anuncios. 
+
+Web ejemplo en Angular cuya finalidad es analizar si el usuario que accede a la web tiene o no tiene activado adblock.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
 
 ## Development server
