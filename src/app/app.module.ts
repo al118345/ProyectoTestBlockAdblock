@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AdblockActivoComponentComponent } from './adblock-activo-component/adblock-activo-component.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AdblockActivoComponentComponent
   ],
   imports: [
     BrowserModule,

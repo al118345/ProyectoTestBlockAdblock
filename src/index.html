@@ -7,6 +7,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+<script>var fuckAdBlock = undefined;</script>
+<script src="./fuckadblock.min.js"></script>
+<script>
+  var detectadblock_msg =
+    '1938.com.es es un sitio sin fines de lucro y se basa en la publicidad para costear ' +
+    'hosting y dominio. Por favor considera deshabilitar el bloqueador de publicidad en 1938.com.es ' +
+    '';
+
+  // We create the function that will be executed if AdBlock is detected
+  var adBlockDetected = function () {
+
+    if (window.location.toString().includes('adblock_') == false  ) {
+      alert(detectadblock_msg);
+      if (window.location.toString().includes('adblock_') == false ) {
+        if (window.location.toString().split('/').length>2) {
+          aux = window.location.toString().split('/')[3].toString()
+          window.location = 'adblock_' + aux
+        } else
+        {
+          window.location = 'adblock_'
+        }
+      }
+    }
+
+  }
+  // We create the function that will be executed if AdBlock is NOT detected
+  var adBlockUndetected = function () {
+    if (window.location.toString().includes('adblock_') == false  ) {
+      alert(detectadblock_msg);
+      if (window.location.toString().includes('adblock_') == false ) {
+        if (window.location.toString().split('/').length>2) {
+          aux = window.location.toString().split('/')[3].toString()
+          window.location = 'adblock_/' + aux
+        } else
+        {
+          window.location = 'adblock_'
+        }
+      }
+    }
+
+  }
+
+  // We observe if the variable "fuckAdBlock" exists
+  if (typeof FuckAdBlock === 'undefined') {
+    // If it does not exist, it means that AdBlock blocking the script FuckAdBlock
+    // Therefore the function "adBlockDetected" is executed
+    // PS: The function is executed on the "document ready" in order to select the HTML with jQuery
+    $(document).ready(adBlockDetected);
+  } else {
+    // Otherwise, our functions we add to FuckAdBlock for a classic detection
+    fuckAdBlock.on(true, adBlockDetected).on(false, adBlockUndetected);
+  }
+</script>
 <body>
   <app-root></app-root>
 </body>
