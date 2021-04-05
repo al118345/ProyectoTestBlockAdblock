@@ -8,7 +8,12 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <script>var fuckAdBlock = undefined;</script>
-<script src="./fuckadblock.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.min.js"></script>
+<script type="text/javascript" src="scripts.js"></script>
+
+<body>
+
+
 <script>
   var detectadblock_msg =
     '1938.com.es es un sitio sin fines de lucro y se basa en la publicidad para costear ' +
@@ -34,18 +39,6 @@
   }
   // We create the function that will be executed if AdBlock is NOT detected
   var adBlockUndetected = function () {
-    if (window.location.toString().includes('adblock_') == false  ) {
-      alert(detectadblock_msg);
-      if (window.location.toString().includes('adblock_') == false ) {
-        if (window.location.toString().split('/').length>2) {
-          aux = window.location.toString().split('/')[3].toString()
-          window.location = 'adblock_/' + aux
-        } else
-        {
-          window.location = 'adblock_'
-        }
-      }
-    }
 
   }
 
@@ -60,7 +53,29 @@
     fuckAdBlock.on(true, adBlockDetected).on(false, adBlockUndetected);
   }
 </script>
-<body>
+
+<script type="text/javascript">
+  var detectadblock_msg =
+    '1938.com.es es un sitio sin fines de lucro y se basa en la publicidad para costear ' +
+    'hosting y dominio. Por favor considera deshabilitar el bloqueador de publicidad en 1938.com.es ' +
+    '';
+  justDetectAdblock.detectAnyAdblocker().then(function(detected) {
+    if(detected){
+      if (window.location.toString().includes('adblock_') == false  ) {
+        alert(detectadblock_msg);
+        if (window.location.toString().includes('adblock_') == false ) {
+          if (window.location.toString().split('/').length>2) {
+            aux = window.location.toString().split('/')[3].toString()
+            window.location = 'adblock_/' + aux
+          } else
+          {
+            window.location = 'adblock_'
+          }
+        }
+      }
+    }
+  });
+</script>
   <app-root></app-root>
 </body>
 </html>
